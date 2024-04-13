@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import axios from "axios";
+import moment from "moment";
 
 const EventsScreen = () => {
   const [events, setEvents] = useState([]);
@@ -17,11 +18,16 @@ const EventsScreen = () => {
       });
   }, []); // Empty dependency array to run the effect only once when the component mounts
 
+  // Format date using moment.js
+  const formatDate = (dateString) => {
+    return moment(dateString).format("MMMM D, YYYY");
+  };
+
   // Render each event as a card
   const renderEvent = ({ item }) => (
     <View style={styles.card}>
       <Text style={styles.title}>{item.title}</Text>
-      <Text style={styles.date}>{item.date}</Text>
+      <Text style={styles.date}>{formatDate(item.date)}</Text>
     </View>
   );
 
