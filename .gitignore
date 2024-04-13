@@ -1,3 +1,6 @@
+.expo/
+.vscode/
+
 # Logs
 logs
 *.log
